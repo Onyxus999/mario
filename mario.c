@@ -13,11 +13,24 @@ void clear(void)
 
 int main(void)
 {
-	
 	clear();
-	
-	printf("Enter a height: ");
-	int height = GetInt(); // get the height from the user
+
+	int height = 0;	
+	while (height <= 0)
+	{
+		printf("Enter a height: ");
+		height = GetInt(); // get the height from the user
+		if (height <= 0)
+		{
+			clear();
+			printf("Please enter a positive integer!\n");
+		}
+		else
+		{
+			clear();
+			printf("Enter a height: %d\n", height); // >_< Cheating
+		}
+	}
 
 	// yay, matracies!
 	// first allocate a height long array of pointers
