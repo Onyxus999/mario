@@ -16,20 +16,13 @@ int main(void)
 	clear();
 
 	int height = 0;	
-	while (height <= 0)
+	while (height <= 0 || height >= 24)
 	{
-		printf("Enter a height: ");
+		printf("Enter a height between 0 and 24: ");
 		height = GetInt(); // get the height from the user
-		if (height <= 0)
-		{
-			clear();
-			printf("Please enter a positive integer!\n");
-		}
-		else
-		{
-			clear();
-			printf("Enter a height: %d\n", height); // >_< Cheating
-		}
+
+        if (height == 0) // bullshit
+            return 0; // bullshit
 	}
 
 	// yay, matracies!
@@ -60,8 +53,6 @@ int main(void)
 				pyramid[i][j] = '#'; // make it a hash
 		}
 	}
-
-	printf("\n"); // make it look pretty
 	
 	// for every row
 	for (int i = 0; i < height; i++)
@@ -71,12 +62,15 @@ int main(void)
 			// print out the block in order
 			printf("%c", pyramid[i][j]);
 
-		printf(" "); // little gap
+		printf("  "); // little gap
 		
 		// for every collumn in reverse order
 		for (int j = height-1; j >= 0; j--)
-			// print out the block in reverse order
-			printf("%c", pyramid[i][j]);
+        {
+            if (pyramid[i][j] != ' ') // bullshit
+			    // print out the block in reverse order
+			    printf("%c", pyramid[i][j]);
+        }
 
 		printf("\n");
 	}
